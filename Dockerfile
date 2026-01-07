@@ -1,5 +1,7 @@
 FROM ghcr.io/puppeteer/puppeteer:latest
 
+LABEL com.centurylinklabs.watchtower.enable="false"
+
 # 切换到 root 用户以安装 pnpm
 USER root
 
