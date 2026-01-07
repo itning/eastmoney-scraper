@@ -84,9 +84,10 @@ app.get('/api/fund/:code', async (req: Request, res: Response): Promise<any> => 
     });
 
     const title = await page.title();
-    // 清洗标题：从 "广发纯债债券A(270048)基金历史净值 _ 基金档案 _ 天天基金网" 
-    // 提取出 "广发纯债债券A(270048)基金历史净值"
-    const cleanedName = title.split('_')[0] || title;
+    // 清洗标题：从 "广发纯债债券A(270048)基金历史净值 _ 基金档案 _ 天天基金网"
+    // 提取出 "广发纯债债券A(270048)"
+    let cleanedName = title.split('_')[0] || title;
+    cleanedName = cleanedName.replace('基金历史净值', '');
 
     res.json({
       code,
